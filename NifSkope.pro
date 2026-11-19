@@ -478,9 +478,15 @@ win32:contains(QT_ARCH, i386) {
 	copyFiles( $$DEP )
 }
 
-	XML += \
-		build/docsys/nifxml/nif.xml \
-		build/docsys/kfmxml/kfm.xml
+	exists(nif.xml) {
+		XML += \
+			nif.xml \
+			kfm.xml
+	} else {
+		XML += \
+			build/docsys/nifxml/nif.xml \
+			build/docsys/kfmxml/kfm.xml
+	}
 
 	QSS += \
 		res/style.qss
